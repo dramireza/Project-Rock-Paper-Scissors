@@ -18,7 +18,7 @@ function playRound(playerSelection, computerSelection){
     let loser;
 
     if (playerSelection === computerSelection){
-        decision = "Lose";
+        decision = "Tie";
         loser = playerSelection;
         winner = computerSelection;
     }else{
@@ -64,7 +64,32 @@ function playRound(playerSelection, computerSelection){
 
 
 }
-const playerChoice = prompt("Rock, paper or scissors?");
-const computerChoice = getComputerChoice();
 
-playRound(playerChoice.toLowerCase(),computerChoice.toLowerCase())
+function game(){
+    let round;
+    let scorePlayer = 0;
+    let scoreComputer = 0;
+    for (let index = 0; index < 5; index++) {
+        let playerChoice = prompt("Rock, paper or scissors?");
+        let computerChoice = getComputerChoice();
+        
+       
+        round = (playRound(playerChoice.toLowerCase(),computerChoice.toLowerCase()))
+        if (round.decision === "Win")scorePlayer++;
+        if (round.decision === "Lose")scoreComputer++;
+        
+        if (round.decision === "Tie"){
+            console.log (`You ${round.decision}! Try Again! `)
+            index--;
+        }else {
+            console.log (`You ${round.decision}! ${round.winner} beats ${round.loser}`)
+            console.log (`Score: You = ${scorePlayer}, CPU = ${scoreComputer}`)
+        }
+
+
+        
+    }
+}
+
+game();
+
