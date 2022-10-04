@@ -18,40 +18,40 @@ function playRound(playerSelection, computerSelection) {
     let loser;
 
     if (playerSelection === computerSelection) {
-        decision = "Tie";
+        decision = "tie";
         loser = playerSelection;
         winner = computerSelection;
     } else {
         switch (playerSelection) {
 
-            case "rock": if (computerSelection === "scissors") {
-                decision = "Win";
+            case "Rock": if (computerSelection === "Scissors") {
+                decision = "win";
                 winner = playerSelection;
                 loser = computerSelection;
-            } if (computerSelection === "paper") {
-                decision = "Lose";
+            } if (computerSelection === "Paper") {
+                decision = "lose";
                 loser = playerSelection;
                 winner = computerSelection;
             }
                 break;
 
-            case "paper": if (computerSelection === "rock") {
-                decision = "Win";
+            case "Paper": if (computerSelection === "Rock") {
+                decision = "win";
                 winner = playerSelection;
                 loser = computerSelection;
-            } if (computerSelection === "scissors") {
-                decision = "Lose";
+            } if (computerSelection === "Scissors") {
+                decision = "lose";
                 loser = playerSelection;
                 winner = computerSelection;
             }
                 break;
 
-            case "scissors": if (computerSelection === "paper") {
-                decision = "Win";
+            case "Scissors": if (computerSelection === "Paper") {
+                decision = "win";
                 winner = playerSelection;
                 loser = computerSelection;
-            } if (computerSelection === "rock") {
-                decision = "Lose";
+            } if (computerSelection === "Rock") {
+                decision = "lose";
                 loser = playerSelection;
                 winner = computerSelection;
             }
@@ -67,32 +67,37 @@ function playRound(playerSelection, computerSelection) {
 let round;
 let playerScore = 0;
 let computerScore = 0;
-
-
+const results = document.querySelector('#results')
+const score = document.querySelector('#score')
 const buttons = document.querySelectorAll('.choice')
+
 buttons.forEach(button => button.addEventListener("click", function (e) {
     let computerChoice = getComputerChoice();
-    let playerChoice = (e.target.textContent);
+    let playerChoice = (e.target.alt);
 
-    round = (playRound(playerChoice.toLowerCase(), computerChoice.toLowerCase()))
+    round = (playRound(playerChoice, computerChoice))
 
-    if (round.decision === "Win") playerScore++;
-    if (round.decision === "Lose") computerScore++;
+    if (round.decision === "win") playerScore++;
+    if (round.decision === "lose") computerScore++;
 
-    if (round.decision === "Tie") {
-        console.log(`It's a ${round.decision}! Try Again!`)
+    if (round.decision === "tie") {
+        results.textContent=`It's a ${round.decision}! Try again!`
     } else {
-        console.log(`You ${round.decision}! ${round.winner} beats ${round.loser}`)
-        console.log(`Score: You = ${playerScore}, CPU = ${computerScore}`)
+        results.textContent=`You ${round.decision}! ${round.winner} beats ${round.loser}`
+        score.textContent=`You - ${playerScore} vs CPU - ${computerScore}`
     }
 
-    if (playerScore == 5) {
-        alert(`You've Won! Congratulations!!!`)
+    if (playerScore == 5) { 
+        results.textContent=`You've Won! Congratulations!!!`;
+        score.textContent="";
         playerScore = 0;
         computerScore = 0;
     }
     if (computerScore == 5) {
-        alert(`You've Lost! Sad Times :(`)
+        results.textContent=`You've Lost! Sad Times :(`;    
+        score.textContent="";
+        playerScore = 0;
+        computerScore = 0;
     }
 }))
 
