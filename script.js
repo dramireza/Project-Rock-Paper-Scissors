@@ -84,7 +84,7 @@ buttons.forEach(button => button.addEventListener("click", function (e) {
         results.textContent=`It's a ${round.decision}! Try again!`
     } else {
         results.textContent=`You ${round.decision}! ${round.winner} beats ${round.loser}`
-        score.textContent=`You - ${playerScore} vs CPU - ${computerScore}`
+        score.textContent=`You: ${playerScore} - CPU: ${computerScore}`
     }
 
     if (playerScore == 5) { 

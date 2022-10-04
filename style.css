@@ -7,8 +7,15 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: burlywood;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    
+    background-color: #1F2937;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: whitesmoke;
+    font-size: 24px;
+}
+.header{
+    font-size: 36px;
+    font-weight: bold;
 }
 
 .body{
@@ -17,15 +24,24 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap:5px;
+    gap:10px;
+}
+
+.container{
+    display: flex;
 }
 
 img{
     max-width: 200px;
-    margin: 10px;
 }
 
-.choice:hover{
+.imgButton{
+    background-color: #E5E7EB;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.imgButton:hover{
     cursor: pointer;
     transform: scale(1.1);
 }
